@@ -12,6 +12,11 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
+        Properties properties = getProperties();
+
+        String url = properties.getProperty("db.url");
+        String username = properties.getProperty("db.username");
+        String password = properties.getProperty("db.password");
 
         try (Connection conn = DriverManager.getConnection(url, username, password);
              var stm = conn.prepareStatement("SELECT datname FROM pg_database");) {
